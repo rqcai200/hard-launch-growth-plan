@@ -142,28 +142,6 @@
   }
   .outcome-list li strong { color: var(--text); font-weight: 600; }
 
-  /* EXPERT TIPS CAROUSEL */
-  .tip-card {
-    flex: 0 0 280px; scroll-snap-align: start;
-    border: 1px solid var(--border); border-radius: 8px; padding: 16px;
-    background: var(--bg-subtle); display: flex; flex-direction: column;
-  }
-  .tip-card-quote {
-    font-size: 13px; color: #333; line-height: 1.65; font-style: italic; flex: 1;
-  }
-  .tip-card-attr {
-    font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 10px;
-    font-style: normal; padding-top: 8px; border-top: 1px solid var(--border);
-  }
-  .tip-card.actionable {
-    background: var(--bg-subtle); border-color: var(--border);
-  }
-  .tip-card.actionable .tip-card-quote { font-style: normal; }
-  .tip-card.actionable .tip-label {
-    font-size: 9px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.06em; color: var(--muted); margin-bottom: 6px;
-  }
-
   /* LL CAROUSEL */
   .carousel-wrap { margin-bottom: 20px; }
   .carousel-label {
@@ -340,7 +318,7 @@
     <div class="stat-label">Free Lightning Lessons</div>
   </div>
   <div class="stat-card">
-    <div class="stat-num">5</div>
+    <div class="stat-num">9</div>
     <div class="stat-label">Free Downloadable Resources</div>
   </div>
   <div class="stat-card">
@@ -360,21 +338,21 @@
     <div class="step-num">1</div>
     <div class="step-content">
       <div class="step-title">Foundation</div>
-      <div class="step-desc">Build your first working prototype. Understand the three-layer mental model (client, server, database), pick the right tool for the job, and learn to prompt effectively. No coding experience needed.</div>
+      <div class="step-desc">Build your first working prototype this week. No coding experience needed.</div>
     </div>
   </div>
   <div class="hero-roadmap-step">
     <div class="step-num">2</div>
     <div class="step-content">
       <div class="step-title">Application</div>
-      <div class="step-desc">Use prototyping to change how you make product decisions. Build reusable baselines, validate hypotheses with clickable prototypes instead of docs, onboard to codebases with AI tools, and prepare for PM interviews that test AI skills.</div>
+      <div class="step-desc">Use prototyping to make better product decisions and prepare for AI PM interviews.</div>
     </div>
   </div>
   <div class="hero-roadmap-step">
     <div class="step-num">3</div>
     <div class="step-content">
       <div class="step-title">Production</div>
-      <div class="step-desc">Ship production-ready apps and lead technical AI conversations. Navigate vendor lock-in, implement security, build systematic evals, understand agentic architectures, and go deep enough technically to manage AI engineering teams.</div>
+      <div class="step-desc">Ship production-ready apps and lead technical AI conversations.</div>
     </div>
   </div>
 </div>
@@ -507,43 +485,13 @@
     </div>
 
     <div class="subsection">
-      <div class="subsection-label">Why</div>
-      <p>The bottleneck in product development used to be engineering capacity. Now it's the speed at which PMs can validate ideas. If you can go from insight to working prototype in an afternoon, you compress discovery cycles from weeks to days. The PMs who learn this first will set the pace for their teams.</p>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-label">What you'll learn</div>
+      <div class="subsection-label">Key outcomes</div>
       <ul class="outcome-list">
-        <li><strong>The three-layer mental model.</strong> Every web app has a client, server, and database. Your prototype probably only needs the client layer. Adding a database when you don't need one triples complexity and lowers output quality.</li>
-        <li><strong>Tool selection by use case.</strong> Use v0 or Magic Patterns for quick UI mockups. Use Lovable or Bolt for full-stack prototypes. Save Cursor and Claude Code for when you need to work inside an existing codebase. Starting in an IDE before you've prototyped is premature.</li>
-        <li><strong>Spec-first prompting.</strong> Generate a structured PRD covering user stories, implementation phases, and a design system in Claude or ChatGPT first. Drop that spec as your first prompt. Results improve dramatically versus open-ended requests like "build me an app."</li>
-        <li><strong>Read code structurally, not syntactically.</strong> You don't need to write production code. You need to understand data flow, what changes when requirements shift, and how to communicate trade-offs. Mental models matter more than syntax.</li>
-        <li><strong>Directive prompting.</strong> Give small, specific instructions rather than requesting whole features. Tell the tool what NOT to change. Reuse constraint prompts to prevent the tool from breaking things you already like.</li>
+        <li><strong>Build a functional prototype in 10 minutes</strong> and test with users the same day, no coding required</li>
+        <li><strong>Use v0 + 21st.dev components</strong> to quickly build a polished UI from your idea</li>
+        <li><strong>Learn the exact prompt phrases</strong> that make AI actually build something that works, not just talk about it</li>
+        <li><strong>Deploy to Vercel or GitHub</strong> and share a live link with your team by end of day</li>
       </ul>
-    </div>
-
-    <div class="carousel-wrap">
-      <div class="carousel-label">Expert Tips</div>
-      <div class="carousel-track">
-        <div class="tip-card actionable">
-          <div class="tip-label">Actionable tip</div>
-          <div class="tip-card-quote"><strong>Start with a component library, not a blank canvas.</strong> Import your company's existing UI components (via screenshots, browser extensions like HTML2React, or directly from GitHub). The starting point matters more than the prompt -- that's what separates a prototype that looks like your product from one that looks AI-generated.</div>
-          <div class="tip-card-attr">From Colin Matthews' course</div>
-        </div>
-        <div class="tip-card">
-          <div class="tip-card-quote">"Previously, you always had to ask someone else, can we build this? And now you can just talk with AI to do this."</div>
-          <div class="tip-card-attr">Harold Dijkstra</div>
-        </div>
-        <div class="tip-card">
-          <div class="tip-card-quote">"The main difference is not the prompt. It is the starting point that we have. The fact that we've already built the components and we are reusing them -- that gives us higher fidelity prototypes without super complex prompts."</div>
-          <div class="tip-card-attr">Colin Matthews</div>
-        </div>
-        <div class="tip-card actionable">
-          <div class="tip-label">Actionable tip</div>
-          <div class="tip-card-quote"><strong>Keep prototypes client-side only.</strong> Each additional layer (server, database) multiplies what the LLM has to manage. If your prototyping tool supports databases, it will nudge you to add one even when you don't need it.</div>
-          <div class="tip-card-attr">From Colin Matthews' course</div>
-        </div>
-      </div>
     </div>
 
     <!-- LL CAROUSEL -->
@@ -615,6 +563,11 @@
           <div class="resource-dl-title">AI Prototyping Toolkit</div>
           <div class="resource-dl-meta">Colin Matthews</div>
         </a>
+        <a href="https://getting-started-with-vib-azzhzx6.gamma.site/" class="resource-dl">
+          <div class="resource-dl-badge">Guide</div>
+          <div class="resource-dl-title">Vibecoding 101 Guide</div>
+          <div class="resource-dl-meta">Carmelo Iaria</div>
+        </a>
       </div>
     </div>
 
@@ -667,48 +620,13 @@
     </div>
 
     <div class="subsection">
-      <div class="subsection-label">Why</div>
-      <p>Building a prototype is step one. Using it to change how your team makes decisions is where the real value is. PMs who prototype don't just move faster -- they communicate more clearly, align teams around shared artifacts instead of spec docs, and validate assumptions before committing engineering resources.</p>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-label">What you'll learn</div>
+      <div class="subsection-label">Key outcomes</div>
       <ul class="outcome-list">
-        <li><strong>The baseline-and-fork workflow.</strong> Build a reusable component library as your base, then fork for each experiment. Iterating 25+ prompts on one project creates instability. Instead, fork, test one feature, gather feedback, start fresh. Each fork takes one prompt.</li>
-        <li><strong>Prototypes as communication tools.</strong> Shared prototypes align PMs, designers, and engineers faster than any doc. Designers pull confirmed requirements back into Figma. Engineers get clarity on intended behavior. But set expectations: prototype does not equal production timeline.</li>
-        <li><strong>Testing AI features with real APIs.</strong> Connect OpenAI or Anthropic APIs inside your prototype to test different prompts and get customer feedback on actual AI responses -- not mocked ones. This eliminates weeks of back-and-forth with engineering on prompt iteration.</li>
-        <li><strong>Codebase onboarding with AI tools.</strong> Clone your actual repo into Cursor or Claude Code, ask "tell me about this codebase," then screenshot UI issues and paste them in. PMs who can't write code can still find bugs and write specs for identified issues.</li>
-        <li><strong>AI prototyping in PM interviews.</strong> Companies are testing three skills: rapid prototyping (build something in 30 min), technical system design (explain trade-offs), and root-cause analysis (debug with AI tools). Practice all three.</li>
-        <li><strong>Persistent context with claude.md files.</strong> LLMs are stateless -- every new session starts fresh. Create a claude.md file with product overview, architecture decisions, API routes, and design guidelines. It acts as shared memory across sessions.</li>
+        <li><strong>Build reusable prototype baselines</strong> so your team ships 10x faster instead of starting from scratch each time</li>
+        <li><strong>Collect stakeholder and customer feedback</strong> on prototypes with simple workflows, not Slack threads</li>
+        <li><strong>Use Claude Code for codebase onboarding,</strong> research, and bug discovery without writing code yourself</li>
+        <li><strong>Nail AI PM interviews</strong> with the three core skills: AI prototyping, technical system design, and root-cause analysis</li>
       </ul>
-    </div>
-
-    <div class="carousel-wrap">
-      <div class="carousel-label">Expert Tips</div>
-      <div class="carousel-track">
-        <div class="tip-card actionable">
-          <div class="tip-label">Actionable tip</div>
-          <div class="tip-card-quote"><strong>Run parallel agents on separate branches.</strong> Spawn 5 simultaneous prototypes using Git worktrees, each with its own branch, PR, and tests. This turns the per-request latency bottleneck into parallel throughput and prevents cascading failures.</div>
-          <div class="tip-card-attr">From Aman Khan's course</div>
-        </div>
-        <div class="tip-card">
-          <div class="tip-card-quote">"The bottleneck isn't writing code anymore -- it's figuring out what the product should look and feel like. If it's cheap to make this thing, then thinking deliberately returns back to having more value."</div>
-          <div class="tip-card-attr">Aman Khan</div>
-        </div>
-        <div class="tip-card">
-          <div class="tip-card-quote">"If you are not doing rapid prototyping in your pursuit to product-market fit, you're losing time. Somebody else is building very fast using these tools."</div>
-          <div class="tip-card-attr">Deepak Singh</div>
-        </div>
-        <div class="tip-card actionable">
-          <div class="tip-label">Actionable tip</div>
-          <div class="tip-card-quote"><strong>Use the baseline-and-fork pattern.</strong> Don't stack 25+ prompts on one project -- it creates instability. Fork your baseline, test one change, gather feedback, start a new fork. Revert and retry rather than debugging endlessly.</div>
-          <div class="tip-card-attr">From Colin Matthews' course</div>
-        </div>
-        <div class="tip-card">
-          <div class="tip-card-quote">"One of the very early students works at Todoist, and they adopted AI prototyping across the team. After the course, PMs were able to ship really small features in production."</div>
-          <div class="tip-card-attr">Colin Matthews</div>
-        </div>
-      </div>
     </div>
 
     <!-- LL CAROUSEL -->
@@ -783,6 +701,28 @@
       </div>
     </div>
 
+    <!-- RESOURCES CAROUSEL -->
+    <div class="carousel-wrap">
+      <div class="carousel-label">Free Resources</div>
+      <div class="carousel-track">
+        <a href="https://the-best-coding-agents-i-2hru7ui.gamma.site/" class="resource-dl">
+          <div class="resource-dl-badge">Guide</div>
+          <div class="resource-dl-title">Claude Code and Codex Guide</div>
+          <div class="resource-dl-meta">Carmelo Iaria</div>
+        </a>
+        <a href="https://drive.google.com/file/d/1gbsGPKp0ypsCjVId3WKWQ2Na-NKdtHem/view?usp=sharing" class="resource-dl">
+          <div class="resource-dl-badge">Guide</div>
+          <div class="resource-dl-title">APIs for Product Managers</div>
+          <div class="resource-dl-meta">Colin Matthews</div>
+        </a>
+        <a href="https://gamma.app/docs/The-Vibe-Coders-Survival-Guide--yqjgloectxz0pzw" class="resource-dl">
+          <div class="resource-dl-badge">Guide</div>
+          <div class="resource-dl-title">The Vibe Coding Survival Guide: 6 Common Pitfalls</div>
+          <div class="resource-dl-meta">Community</div>
+        </a>
+      </div>
+    </div>
+
     <!-- COURSES -->
     <div class="carousel-label" style="margin-top:12px;">Courses</div>
 
@@ -835,48 +775,13 @@
     </div>
 
     <div class="subsection">
-      <div class="subsection-label">Why</div>
-      <p>Most PMs plateau after learning to prototype. The gap between "impressive demo" and "production-ready" is wider than it looks, and it's where the most career leverage sits. PMs who understand production constraints, security defaults, vendor lock-in, and evaluation systems can lead AI product conversations that most PMs can't even participate in.</p>
-    </div>
-
-    <div class="subsection">
-      <div class="subsection-label">What you'll learn</div>
+      <div class="subsection-label">Key outcomes</div>
       <ul class="outcome-list">
-        <li><strong>Design first, then convert to full-stack.</strong> Iterate on UI in client-only mode (cheap, fast). Only add server and database after finalizing the interface. Generating all three layers together costs 3x more tokens and wastes work when you inevitably change the UI.</li>
-        <li><strong>Use production-ready templates as backend reference.</strong> Templates embed security middleware, Stripe integration, unit tests, analytics, and XSS prevention. Point Claude Code at the template as reference instead of generating backend code from scratch.</li>
-        <li><strong>Understand vendor lock-in.</strong> Lovable and Bolt withhold database credentials, making migration impossible without rebuilding. Replit provides credentials for portability. For serious products: prototype in Magic Patterns, build in Replit, then self-host on Render or AWS.</li>
-        <li><strong>Move from gut-feel to systematic evals.</strong> Write LLM evals with three parts: eval prompt defining judge criteria, explanation requirement forcing step-by-step reasoning, output rails constraining responses to scoreable labels. Compare across prompt variants to make data-driven decisions.</li>
-        <li><strong>Start agents simple.</strong> Single agent with clear tools, not multi-agent orchestration. The tool description is the most critical field -- it tells the model when to use each tool. Multi-agent systems add unnecessary complexity until the single-agent version works.</li>
-        <li><strong>Security is open by default.</strong> Supabase-based tools use Row-Level Security that is completely open by default. Production apps need auth early (not retrofitted), error handling, API rate limiting, and schema validation. The data model is the most important spec element of all.</li>
+        <li><strong>Know the 5 things that break in production</strong> (hallucinations, latency, cost, eval gaps, silent failures) and how to gate against them</li>
+        <li><strong>Validate before building:</strong> use Colin's 8-step process to avoid tech debt and error hell from skipping straight to code</li>
+        <li><strong>Define AI agent personas and coordination protocols</strong> using Cursor rules and the AAMAD framework</li>
+        <li><strong>Structure the PRD-to-prod pipeline</strong> so vibe-coded prototypes can actually make it to production</li>
       </ul>
-    </div>
-
-    <div class="carousel-wrap">
-      <div class="carousel-label">Expert Tips</div>
-      <div class="carousel-track">
-        <div class="tip-card actionable">
-          <div class="tip-label">Actionable tip</div>
-          <div class="tip-card-quote"><strong>Optimize agents for reliability, not speed.</strong> Restrict agents to reliable data sources, set confidence score thresholds (route to humans below 0.8), and reduce creativity in system prompts. The PM's competitive advantage is identifying the right use cases -- developers can't do that alone.</div>
-          <div class="tip-card-attr">From Deepak Singh's course</div>
-        </div>
-        <div class="tip-card">
-          <div class="tip-card-quote">"Even though it's become easier than ever to build software, this has created a new problem -- Vibe Coding Hell -- where you're generating code faster than you can understand it."</div>
-          <div class="tip-card-attr">Shaw Talebi</div>
-        </div>
-        <div class="tip-card actionable">
-          <div class="tip-label">Actionable tip</div>
-          <div class="tip-card-quote"><strong>Design-first, then convert.</strong> Iterate on UI in client-only mode. Only add server and database after the interface is finalized. Generating all three layers together costs 3x more tokens and wastes work when you change the UI later.</div>
-          <div class="tip-card-attr">From Colin Matthews' course</div>
-        </div>
-        <div class="tip-card">
-          <div class="tip-card-quote">"A person who can build very good workflows can actually build good agents also, because the fundamentals are the same."</div>
-          <div class="tip-card-attr">Deepak Singh</div>
-        </div>
-        <div class="tip-card">
-          <div class="tip-card-quote">"Even though you can spin up entire applications using English via coding agents, it's still helpful to understand a little bit of how programming works."</div>
-          <div class="tip-card-attr">Shaw Talebi</div>
-        </div>
-      </div>
     </div>
 
     <!-- LL CAROUSEL -->
@@ -932,6 +837,28 @@
           <div class="ll-card-top"><span class="ll-badge ondemand">On-demand</span></div>
           <div class="ll-title">Set Agents (and Humans) Up to Succeed in Your Codebase</div>
           <div class="ll-instructor">Claire Vo</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- RESOURCES CAROUSEL -->
+    <div class="carousel-wrap">
+      <div class="carousel-label">Free Resources</div>
+      <div class="carousel-track">
+        <a href="https://hamel.dev/notes/llm/evals/flashcards/" class="resource-dl">
+          <div class="resource-dl-badge">Flashcards</div>
+          <div class="resource-dl-title">AI Eval Flashcards</div>
+          <div class="resource-dl-meta">Hamel Husain</div>
+        </a>
+        <a href="https://hamel.dev/blog/posts/evals-faq/evals-faq.pdf" class="resource-dl">
+          <div class="resource-dl-badge">PDF</div>
+          <div class="resource-dl-title">AI Evals FAQ</div>
+          <div class="resource-dl-meta">Hamel Husain</div>
+        </a>
+        <a href="https://ai-evals-cheatsheet-maawahq.gamma.site/" class="resource-dl">
+          <div class="resource-dl-badge">Cheatsheet</div>
+          <div class="resource-dl-title">AI Evals Cheatsheet for Product Managers</div>
+          <div class="resource-dl-meta">Community</div>
         </a>
       </div>
     </div>
