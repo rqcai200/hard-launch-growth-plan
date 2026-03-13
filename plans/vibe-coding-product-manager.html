@@ -279,6 +279,11 @@
   .gated-wrapper.locked .ll-card,
   .gated-wrapper.locked .resource-dl,
   .gated-wrapper.locked .course-card { pointer-events: none; }
+  .gated-wrapper.locked .ll-card::after {
+    content: '\1F512  Unlock with email';
+    display: block; font-size: 11px; color: #999; font-weight: 500;
+    margin-top: 8px; letter-spacing: 0.02em;
+  }
   .gate-overlay-cta {
     background: var(--text); border-radius: 10px; padding: 36px 32px;
     text-align: center; max-width: 540px; width: 100%;
@@ -319,7 +324,7 @@
 <div class="hero">
   <span class="hero-badge">Vibe Coding &times; Product Management</span>
   <h1>Your Vibe Coding Growth Plan</h1>
-  <p>A structured learning path from first prototype to production-ready apps. Curated by Maven from the top AI prototyping instructors.</p>
+  <p>Go from first prototype to shipping real apps. Curated by Maven from the top AI prototyping instructors.</p>
 </div>
 
 <!-- PREVIEW STATS -->
@@ -386,7 +391,7 @@
   <!-- WHY THIS MATTERS -->
   <div class="why-section fade-in">
     <div class="section-label">Why this matters for PMs</div>
-    <p>AI prototyping tools like Cursor, Lovable, and Claude Code let you build working software through natural language. For PMs, this means going from product idea to clickable prototype in an afternoon without waiting on engineering. Companies like Shopify have added AI prototyping to their PM interview loops. As Deepak Singh, ex-Amazon PM, puts it: "For the first time, you can actually show what you can build -- your product sense and everything -- by creating a portfolio of products." The role is changing: PMs who can build prototypes make better product decisions, communicate more clearly with engineering, and move faster from insight to validation.</p>
+    <p>AI prototyping tools like Cursor, Lovable, and Claude Code let you build working software through natural language. For PMs, that means going from product idea to clickable prototype in an afternoon, without waiting on engineering. Companies like Shopify now test AI prototyping in their PM interview loops. As Deepak Singh, ex-Amazon PM, puts it: "For the first time, you can actually show what you can build, your product sense and everything, by creating a portfolio of products." PMs who can prototype make better product decisions, communicate more clearly with engineering, and move faster from insight to validation.</p>
   </div>
 
   <!-- EXPERTS -->
@@ -486,8 +491,8 @@
 </div><!-- end ungated content -->
 
 <!-- UNGATED: Foundation header + skills -->
-<div class="content">
-  <div class="level-section fade-in">
+<div class="content" style="padding-bottom: 0;">
+  <div class="level-section fade-in" style="margin-bottom: 0;">
     <div class="level-header">
       <div class="step-num">1</div>
       <h2>Foundation</h2>
@@ -497,10 +502,10 @@
     <div class="subsection">
       <div class="subsection-label">Key skills to master</div>
       <ul class="outcome-list">
-        <li><strong>Build a functional prototype in under 30 minutes</strong> using v0, Lovable, Bolt, or Cursor — no coding required</li>
+        <li><strong>Build a functional prototype in under 30 minutes</strong> using v0, Lovable, Bolt, or Cursor. No coding required.</li>
         <li><strong>Pick the right tool for the job:</strong> quick UI mockups vs. full-stack apps vs. working inside an existing codebase</li>
-        <li><strong>Write prompts that produce working software</strong> by starting with structured specs and using the phrases that actually get results</li>
-        <li><strong>Deploy and share a live link</strong> with your team using Vercel or GitHub — same day</li>
+        <li><strong>Write prompts that produce working software</strong> by starting with structured specs, not open-ended requests</li>
+        <li><strong>Deploy and share a live link</strong> with your team using Vercel or GitHub, same day</li>
       </ul>
     </div>
   </div>
@@ -509,7 +514,7 @@
 <!-- GATED CONTENT: starts at Lightning Lessons -->
 <div class="gated-wrapper locked" id="gated-wrapper">
 <div class="gated-content">
-<div class="content">
+<div class="content" style="padding-top: 0;">
 
   <div class="level-section">
     <!-- LL CAROUSEL -->
@@ -599,14 +604,14 @@
       </div>
       <div class="course-title">Prototyping with AI Bootcamp</div>
       <div class="course-meta">Harold Dijkstra &middot; 519 students across 16 cohorts</div>
-      <div class="course-desc">The most popular prototyping course on Maven. Hands-on bootcamp for non-technical builders using v0, Lovable, and Bolt. You'll ship a working prototype by the end.</div>
+      <div class="course-desc">Hands-on bootcamp for non-technical builders using v0, Lovable, and Bolt. 519 students across 16 cohorts. You ship a working prototype by the end.</div>
     </a>
 
     <a href="https://maven.com/tech-for-product/ai-prototyping-for-product-managers" class="course-card">
       <div class="course-top"><span class="course-badge">Course</span></div>
       <div class="course-title">AI Prototyping for Product Managers</div>
       <div class="course-meta">Colin Matthews &middot; 30,000+ students</div>
-      <div class="course-desc">Multi-cohort, hands-on course. Takes you from first prototype through design systems, component libraries, and integrating AI prototyping into your team's workflow.</div>
+      <div class="course-desc">Covers first prototype through design systems, component libraries, and integrating AI prototyping into your team's workflow.</div>
     </a>
 
     <a href="https://maven.com/james-gray/claude?join=3" class="course-card upcoming-course">
@@ -616,14 +621,14 @@
       </div>
       <div class="course-title">Claude for Builders</div>
       <div class="course-meta">James Gray &middot; Cohort 3</div>
-      <div class="course-desc">Practical introduction to building with Claude. Good entry point for PMs who want to understand the tool that's becoming standard in AI product development.</div>
+      <div class="course-desc">Learn to build with Claude from scratch. Useful for PMs who want to understand the tool that's becoming standard in AI product teams.</div>
     </a>
 
     <a href="https://maven.com/aiafterhours/mit-mom-ruins-vibe-coding" class="course-card">
       <div class="course-top"><span class="course-badge">Course</span></div>
       <div class="course-title">Vibe Coding Weekend Bootcamp: The Potential and The Limitations</div>
       <div class="course-meta">Yuying Chen-Wynn &middot; AI After Hours</div>
-      <div class="course-desc">Weekend bootcamp designed for non-engineers. Covers the real potential and honest limitations of vibe coding tools so you know when to use them and when not to.</div>
+      <div class="course-desc">Weekend bootcamp for non-engineers. Covers what vibe coding tools can actually do well and where they fall apart.</div>
     </a>
   </div>
 
@@ -642,7 +647,7 @@
       <ul class="outcome-list">
         <li><strong>Use prototypes to validate hypotheses</strong> before committing engineering resources</li>
         <li><strong>Build reusable baselines</strong> and organize your team's prototypes instead of starting from scratch each time</li>
-        <li><strong>Onboard to codebases with Claude Code and Cursor</strong> — find bugs, run experiments, and write specs without writing code</li>
+        <li><strong>Onboard to codebases with Claude Code and Cursor</strong> to find bugs, run experiments, and write specs without writing code</li>
         <li><strong>Prepare for AI PM interviews</strong> covering prototyping, technical system design, and root-cause analysis</li>
       </ul>
     </div>
@@ -751,14 +756,14 @@
       </div>
       <div class="course-title">Claude Code for Product Managers</div>
       <div class="course-meta">Aman Khan &middot; Cohort 2</div>
-      <div class="course-desc">Goes beyond visual prototyping. Covers using Claude Code as a PM for codebase onboarding, research, analysis, bug discovery, and building features -- without writing code yourself.</div>
+      <div class="course-desc">Use Claude Code as a PM for codebase onboarding, research, analysis, bug discovery, and building features. No code writing required.</div>
     </a>
 
     <a href="https://maven.com/aman-khan/thriving-as-an-ai-pm" class="course-card">
       <div class="course-top"><span class="course-badge">Course</span></div>
       <div class="course-title">Prototype to Production: The AI PM Playbook</div>
       <div class="course-meta">Aman Khan</div>
-      <div class="course-desc">Bridges the gap between "I have a working prototype" and "we shipped an AI product." Covers evaluation frameworks, stakeholder alignment, and production readiness for AI features.</div>
+      <div class="course-desc">Takes you from "I have a working prototype" to "we shipped an AI product." Covers evaluation frameworks, stakeholder alignment, and production readiness.</div>
     </a>
 
     <a href="https://maven.com/xinran/ai-for-product-designers" class="course-card upcoming-course">
@@ -768,7 +773,7 @@
       </div>
       <div class="course-title">AI for Product Designers</div>
       <div class="course-meta">Xinran Ma &middot; 2,500+ students</div>
-      <div class="course-desc">For PMs who work closely with design. AI prototyping from the design perspective -- Figma to code, interaction patterns, and design systems for AI features.</div>
+      <div class="course-desc">AI prototyping from the design side: Figma to code, interaction patterns, and design systems for AI features. Good for PMs who work closely with design.</div>
     </a>
 
     <a href="https://maven.com/james-gray/hands-on-ai-for-leaders?join=16" class="course-card upcoming-course">
@@ -778,7 +783,7 @@
       </div>
       <div class="course-title">Hands-on Agentic AI for Leaders</div>
       <div class="course-meta">James Gray &middot; 354 students</div>
-      <div class="course-desc">For PMs and leaders who need to understand agentic AI well enough to make product decisions about it. Hands-on without requiring engineering background.</div>
+      <div class="course-desc">Hands-on agentic AI for PMs and leaders who need to understand it well enough to make product decisions. No engineering background required.</div>
     </a>
   </div>
 
@@ -795,10 +800,10 @@
     <div class="subsection">
       <div class="subsection-label">Key skills to master</div>
       <ul class="outcome-list">
-        <li><strong>Go from demo to production:</strong> understand the failure modes — hallucinations, latency spikes, cost explosions, eval gaps, silent failures</li>
-        <li><strong>Build and evaluate AI features</strong> with evals, prompt iteration, and data-driven quality gates</li>
-        <li><strong>Understand agentic architectures</strong> well enough to lead engineering teams — agent personas, coordination protocols, multi-agent systems</li>
-        <li><strong>Scale AI adoption across your EPD org</strong> with PRD-to-prod pipelines and operating model redesign</li>
+        <li><strong>Go from demo to production:</strong> learn what breaks when real users show up (hallucinations, latency, cost, eval gaps, silent failures)</li>
+        <li><strong>Build and evaluate AI features</strong> with evals, prompt iteration, and quality gates based on real data</li>
+        <li><strong>Understand agentic architectures</strong> well enough to lead engineering teams: agent personas, coordination protocols, multi-agent systems</li>
+        <li><strong>Scale AI adoption across your EPD org</strong> with PRD-to-prod pipelines and operating model changes</li>
       </ul>
     </div>
 
@@ -896,7 +901,7 @@
       </div>
       <div class="course-title">AI Evals For Engineers & PMs</div>
       <div class="course-meta">Hamel Husain &amp; Shreya Shankar &middot; 4,048 students</div>
-      <div class="course-desc">The most popular AI engineering course on Maven. Build systematic evaluation frameworks for AI products. Essential for PMs making data-driven decisions about AI quality instead of "looks good to me."</div>
+      <div class="course-desc">4,048 students. Build evaluation frameworks for AI products so you can make quality decisions based on real data instead of "looks good to me."</div>
     </a>
 
     <a href="https://maven.com/boring-bot/ml-system-design?join=2026-03" class="course-card upcoming-course">
@@ -923,14 +928,14 @@
       <div class="course-top"><span class="course-badge">Course</span></div>
       <div class="course-title">AI Builders Bootcamp</div>
       <div class="course-meta">Shaw Talebi</div>
-      <div class="course-desc">Six sessions covering the full technical stack: coding with AI, prompt engineering, RAG, agents, fine-tuning, and shipping. For PMs who want to deeply understand what they're building.</div>
+      <div class="course-desc">Six sessions covering coding with AI, prompt engineering, RAG, agents, fine-tuning, and shipping. For PMs who want to understand the full technical stack.</div>
     </a>
 
     <a href="https://maven.com/tech-for-product/vibe-code-your-next-side-project" class="course-card">
       <div class="course-top"><span class="course-badge">Course</span></div>
       <div class="course-title">Vibe Code Production-Ready Side Projects</div>
       <div class="course-meta">Colin Matthews</div>
-      <div class="course-desc">CI/CD pipelines, unit tests, integration tests, and security -- taught for people who aren't engineers. Based on a workflow that led to a production app acquisition in under 90 days.</div>
+      <div class="course-desc">CI/CD pipelines, unit tests, integration tests, and security, taught for people who aren't engineers. Based on a workflow that led to a production app acquisition in under 90 days.</div>
     </a>
 
     <a href="https://maven.com/aggregate-intellect/llm-systems?join=2603" class="course-card upcoming-course">
@@ -940,7 +945,7 @@
       </div>
       <div class="course-title">AI Agents for Pragmatic Builders</div>
       <div class="course-meta">Amir Feizpour &middot; 202 students</div>
-      <div class="course-desc">Claude Code, LangGraph, and n8n. Covers the practical infrastructure of building and deploying AI agents for PMs who want to go beyond prototyping into production systems.</div>
+      <div class="course-desc">Claude Code, LangGraph, and n8n. The practical infrastructure for building and deploying AI agents, aimed at PMs ready to move past prototyping.</div>
     </a>
 
     <a href="https://maven.com/clairevo/ai-native-epd-org" class="course-card upcoming-course">
@@ -950,7 +955,7 @@
       </div>
       <div class="course-title">Building an AI-Native EPD Org</div>
       <div class="course-meta">Claire Vo &amp; Zach Davis &middot; Cohort 1</div>
-      <div class="course-desc">Scale AI adoption across engineering, product, and design teams. Covers culture change, technical readiness, and operating model redesign to turn scattered AI experimentation into company-wide leverage.</div>
+      <div class="course-desc">How to scale AI adoption across engineering, product, and design. Covers culture change, technical readiness, and operating model changes that turn scattered AI experimentation into something the whole company uses.</div>
     </a>
   </div>
 
