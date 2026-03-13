@@ -23,6 +23,7 @@
     color: var(--text); background: #fff; line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
+  body.locked { padding-bottom: 80px; }
 
   .fade-in { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -237,16 +238,7 @@
   .hero-roadmap-step .step-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
   /* EMAIL GATE */
-  .email-gate {
-    max-width: 720px; margin: 0 auto 0; padding: 0 24px 48px;
-  }
-  .email-gate-box {
-    background: var(--text); border-radius: 10px; padding: 24px 28px;
-    text-align: center; position: relative; overflow: hidden;
-  }
-  .email-gate-box h2 { font-family: 'Bureau Serif', Georgia, serif; font-size: 20px; font-weight: 400; color: #fff; margin-bottom: 4px; }
-  .email-gate-box p { font-size: 13px; color: #999; margin-bottom: 14px; line-height: 1.5; }
-  .email-form { display: flex; gap: 8px; max-width: 420px; margin: 0 auto; }
+  .email-form { display: flex; gap: 8px; }
   .email-form input {
     flex: 1; padding: 10px 14px; border: 1px solid #e0e0e0; background: #fff;
     color: var(--text); border-radius: 6px; font-size: 14px; font-family: inherit; outline: none;
@@ -259,38 +251,37 @@
     font-family: inherit; white-space: nowrap;
   }
   .email-form button:hover { opacity: 0.9; }
-  .email-success { display: none; color: var(--accent); font-size: 14px; font-weight: 500; margin-top: 12px; }
-  .email-privacy { font-size: 11px; color: #666; margin-top: 10px; }
 
-  /* GATED CONTENT OVERLAY */
-  .gated-wrapper { position: relative; }
-  .gated-wrapper.locked .gated-content {
-    max-height: 500px; overflow: hidden;
-    -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 90%);
-    mask-image: linear-gradient(to bottom, black 20%, transparent 90%);
-    pointer-events: none;
+  /* LOCKED STATE: all interactive content disabled */
+  body.locked .ll-card,
+  body.locked .resource-dl,
+  body.locked .course-card,
+  body.locked .instructor-follow { pointer-events: none; }
+
+  /* FLOATING EMAIL BAR */
+  .floating-gate {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+    background: var(--text); padding: 16px 24px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+    transform: translateY(0); transition: transform 0.4s ease;
   }
-  .gated-wrapper.locked .gate-overlay {
-    display: flex; position: absolute; bottom: 0; left: 0; right: 0;
-    height: auto; align-items: flex-end; justify-content: center; padding-bottom: 40px; padding-top: 80px;
-    background: linear-gradient(to bottom, transparent 0%, white 40%);
+  .floating-gate.hidden { transform: translateY(100%); pointer-events: none; }
+  .floating-gate-inner {
+    max-width: 720px; margin: 0 auto;
+    display: flex; align-items: center; gap: 16px;
   }
-  .gated-wrapper .gate-overlay { display: none; }
-  .gated-wrapper.locked .ll-card,
-  .gated-wrapper.locked .resource-dl,
-  .gated-wrapper.locked .course-card { pointer-events: none; }
-  .gated-wrapper.locked .ll-card::after {
-    content: '\1F512  Unlock with email';
-    display: block; font-size: 11px; color: #999; font-weight: 500;
-    margin-top: 8px; letter-spacing: 0.02em;
+  .floating-gate-text { flex: 1; min-width: 0; }
+  .floating-gate-text h3 {
+    font-family: 'Bureau Serif', Georgia, serif; font-size: 16px; font-weight: 400;
+    color: #fff; margin-bottom: 2px; white-space: nowrap;
   }
-  .gate-overlay-cta {
-    background: var(--text); border-radius: 10px; padding: 36px 32px;
-    text-align: center; max-width: 540px; width: 100%;
+  .floating-gate-text p { font-size: 12px; color: #999; line-height: 1.4; }
+  .floating-gate .email-form { flex-shrink: 0; }
+  .floating-gate .email-success { color: var(--highlight); }
+  @media (max-width: 640px) {
+    .floating-gate-inner { flex-direction: column; gap: 10px; text-align: center; }
+    .floating-gate-text p { display: none; }
   }
-  .gate-overlay-cta h2 { font-family: 'Bureau Serif', Georgia, serif; font-size: 22px; font-weight: 400; color: #fff; margin-bottom: 8px; }
-  .gate-overlay-cta p { font-size: 14px; color: #b0b0b0; margin-bottom: 16px; line-height: 1.5; }
-  .gate-overlay-cta .email-form { max-width: 400px; margin: 0 auto; }
 
   /* BOTTOM EMAIL CTA (shown after unlock) */
   .email-cta {
@@ -310,7 +301,7 @@
   }
 </style>
 </head>
-<body>
+<body class="locked">
 
 <nav>
   <a href="#" class="nav-logo"><img src="https://cdn.brandfetch.io/idIp45c7Hp/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1772482451686" alt="Maven" style="height: 20px;"></a>
@@ -373,20 +364,7 @@
   </div>
 </div>
 
-<!-- EMAIL GATE (hero) -->
-<div class="email-gate fade-in">
-  <div class="email-gate-box">
-    <h2>Unlock your growth plan</h2>
-    <p>A structured learning plan with curated free lessons, resources, and courses taken by 400,000+ students.</p>
-    <form class="email-form" id="gate-form" onsubmit="event.preventDefault(); unlockContent(this);">
-      <input type="email" placeholder="you@company.com" required>
-      <button type="submit">Get access</button>
-    </form>
-    <div id="gate-success" class="email-success">You're in! Scroll down to explore your plan.</div>
-  </div>
-</div>
-
-<!-- UNGATED CONTENT: Why + Experts -->
+<!-- CONTENT: Why + Experts -->
 <div class="content">
   <!-- WHY THIS MATTERS -->
   <div class="why-section fade-in">
@@ -488,9 +466,9 @@
       <button class="instructor-follow" onclick="event.preventDefault();">Subscribe</button>
     </a>
   </div>
-</div><!-- end ungated content -->
+</div>
 
-<!-- UNGATED: Foundation header + skills -->
+<!-- Foundation header + skills -->
 <div class="content" style="padding-bottom: 0;">
   <div class="level-section fade-in" style="margin-bottom: 0;">
     <div class="level-header">
@@ -511,9 +489,6 @@
   </div>
 </div>
 
-<!-- GATED CONTENT: starts at Lightning Lessons -->
-<div class="gated-wrapper locked" id="gated-wrapper">
-<div class="gated-content">
 <div class="content" style="padding-top: 0;">
 
   <div class="level-section">
@@ -961,29 +936,25 @@
 
 
 </div>
-</div><!-- end gated-content -->
-<div class="gate-overlay">
-  <div class="gate-overlay-cta">
-    <h2>Unlock your growth plan</h2>
-    <p>A structured learning plan with curated free lessons, resources, and courses taken by 400,000+ students.</p>
-    <form class="email-form" id="gate-form-2" onsubmit="event.preventDefault(); unlockContent(this);">
+
+<!-- FLOATING EMAIL BAR -->
+<div class="floating-gate" id="floating-gate">
+  <div class="floating-gate-inner">
+    <div class="floating-gate-text">
+      <h3>Unlock your growth plan</h3>
+      <p>Curated free lessons, resources, and courses taken by 400,000+ students.</p>
+    </div>
+    <form class="email-form" id="gate-form" onsubmit="event.preventDefault(); unlockContent();">
       <input type="email" placeholder="you@company.com" required>
       <button type="submit">Get access</button>
     </form>
   </div>
 </div>
-</div><!-- end gated-wrapper -->
 
 <script>
-function unlockContent(form) {
-  // Hide both gate forms and show success on the hero gate
-  document.getElementById('gate-form').style.display = 'none';
-  document.getElementById('gate-success').style.display = 'block';
-  const wrapper = document.getElementById('gated-wrapper');
-  wrapper.classList.remove('locked');
-  setTimeout(() => {
-    wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 400);
+function unlockContent() {
+  document.body.classList.remove('locked');
+  document.getElementById('floating-gate').classList.add('hidden');
 }
 
 const observer = new IntersectionObserver((entries) => {
