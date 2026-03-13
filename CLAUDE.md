@@ -8,9 +8,12 @@ Generate customized learning growth plans for Maven's landing page hero. Each pl
 data/                          # Raw Metabase exports (refresh periodically)
   lightning_lessons.json       # LL page content (Metabase #6859)
   course_syllabus.json         # Course syllabus + taxonomy (Metabase #15271)
+  course_syllabus_5k.json     # Course syllabus for courses >$5K earnings (Metabase #15970)
+  course_landing_pages.json   # Course landing page content (Metabase #15965)
   gmv_by_course.json           # GMV by course (Metabase #3887)
   ll_signups_by_school.json    # LL signups by school (Metabase #4081)
-  lead_magnets.json            # Lead magnet page content (Metabase #15864)
+  lead_magnets.json            # Lead magnet page content - all (Metabase #15864)
+  lead_magnets_recent.json    # Lead magnets updated in past year (Metabase #15971)
   transcripts_*.json           # Transcript query results per instructor
 plans/                         # Completed growth plans (topic-role.md)
 skills/                        # Skill definition for generating plans
@@ -22,9 +25,12 @@ skills/                        # Skill definition for generating plans
 |------|----------|-----|-------------------|
 | Lightning Lesson page content | 6859 | https://maven.metabaseapp.com/question/6859 | Weekly |
 | Course syllabus + taxonomy | 15271 | https://maven.metabaseapp.com/question/15271 | Weekly |
+| Course syllabus (>$5K earnings) | 15970 | https://maven.metabaseapp.com/question/15970 | Weekly |
+| Course landing pages (published) | 15965 | https://maven.metabaseapp.com/question/15965 | Weekly |
 | GMV by course | 3887 | https://maven.metabaseapp.com/question/3887 | Weekly |
 | LL signups by school | 4081 | https://maven.metabaseapp.com/question/4081 | Weekly |
-| Lead magnet page content | 15864 | https://maven.metabaseapp.com/question/15864 | Weekly |
+| Lead magnet page content (all) | 15864 | https://maven.metabaseapp.com/question/15864 | Weekly |
+| Lead magnets (recent, past year) | 15971 | https://maven.metabaseapp.com/question/15971 | Weekly |
 | Course video transcripts | 10189 | https://maven.metabaseapp.com/question/10189 | Per-instructor (filter by school slug) |
 
 ## API access
@@ -39,9 +45,12 @@ skills/                        # Skill definition for generating plans
 ```bash
 curl -s -H "x-api-key: $MB_TOKEN" "https://maven.metabaseapp.com/api/card/6859/query/json" -X POST > data/lightning_lessons.json
 curl -s -H "x-api-key: $MB_TOKEN" "https://maven.metabaseapp.com/api/card/15271/query/json" -X POST > data/course_syllabus.json
+curl -s -H "x-api-key: $MB_TOKEN" "https://maven.metabaseapp.com/api/card/15970/query/json" -X POST > data/course_syllabus_5k.json
+curl -s -H "x-api-key: $MB_TOKEN" "https://maven.metabaseapp.com/api/card/15965/query/json" -X POST > data/course_landing_pages.json
 curl -s -H "x-api-key: $MB_TOKEN" "https://maven.metabaseapp.com/api/card/3887/query/json" -X POST > data/gmv_by_course.json
 curl -s -H "x-api-key: $MB_TOKEN" "https://maven.metabaseapp.com/api/card/4081/query/json" -X POST > data/ll_signups_by_school.json
 curl -s -H "x-api-key: $MB_TOKEN" "https://maven.metabaseapp.com/api/card/15864/query/json" -X POST > data/lead_magnets.json
+curl -s -H "x-api-key: $MB_TOKEN" "https://maven.metabaseapp.com/api/card/15971/query/json" -X POST > data/lead_magnets_recent.json
 ```
 
 ## Key rules

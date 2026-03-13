@@ -24,10 +24,16 @@ Search the local data files (NOT Metabase live -- use cached data in `data/` dir
 - Extract: title, slug (for URL: `https://maven.com/p/{slug}`), instructor name, instructor image URL (INSTRUCTOR_IMG_URL), school_id, brand_label, learning objectives, description
 - Identify upcoming vs. on-demand LLs
 
-**Courses** (`data/course_syllabus.json`):
+**Courses** (`data/course_syllabus_5k.json` for courses over $5K earnings):
 - Filter by keyword match across COURSE_NAME, TOPICS, ITEM_TITLE
 - Deduplicate by COURSE_ID (many rows per course)
 - Extract: course_name, course_url, course_id, school_slug, topics, cohort info, start dates
+- Has GMV_LAST_12_MONTHS field for prioritization
+
+**Course landing pages** (`data/course_landing_pages.json`):
+- Use to enrich course descriptions and extract "Key skills to master" content
+- Parse Sections JSON for outcomes, skills, testimonials, and learning objectives
+- Cross-reference with course_syllabus_5k for the same courses
 
 **GMV ranking** (`data/gmv_by_course.json`):
 - Cross-reference course IDs to rank by `Sum of Gross Amount After Discount ($)`
@@ -37,9 +43,11 @@ Search the local data files (NOT Metabase live -- use cached data in `data/` dir
 - Cross-reference school_id to get signup counts per instructor
 - Use format "X+ students" in instructor cards
 
-**Lead magnets** (`data/lead_magnets.json`):
+**Lead magnets** (`data/lead_magnets_recent.json` — only resources updated in past year):
 - Check if any relevant lead magnets exist for the topic
-- If so, include in the "Free Resources" carousel at Foundation level
+- Include in the "Free Resources" carousel at EVERY level (Foundation, Application, Production)
+- At least 1 free resource per section
+- Parse Sections JSON for title (from "main" section_type) and URL (from "Content Pages Lead Magnets → Link URL")
 
 ### Step 2: Identify expert instructors
 
@@ -71,7 +79,7 @@ Search the local data files (NOT Metabase live -- use cached data in `data/` dir
 
 The resources are largely the same across roles. What changes:
 - **"Why this matters" section**: frame urgency in terms of their role
-- **"What you'll learn" bullets**: role-specific outcomes at each level
+- **"Key skills to master" bullets**: role-specific skills at each level, pulled from real LL learning objectives and course landing page content — practical, not salesy
 - **Which LLs to highlight first**: if a LL is role-specific, lead with it
 
 Role framing guidelines:
@@ -117,11 +125,9 @@ Use `plans/vibe-coding-product-manager.html` as the reference template. The page
    - Name, title, student count
    - Subscribe button
 8. **Level 1: Foundation** section containing:
-   - Why subsection (1 paragraph)
-   - What you'll learn (outcome list with specific, actionable items)
-   - Expert Tips carousel (mix of actionable tips and quotes)
+   - Key skills to master (bullet list pulled from real LL LEARNING_OBJECTIVES and course landing page content)
    - Lightning Lessons carousel (upcoming with date badges, on-demand)
-   - Free Resources carousel (if lead magnets exist)
+   - Free Resources carousel (from lead_magnets_recent.json — at least 1 per section)
    - Courses section
 9. **Level 2: Application** -- same structure as Level 1
 10. **Level 3: Production** -- same structure as Level 1

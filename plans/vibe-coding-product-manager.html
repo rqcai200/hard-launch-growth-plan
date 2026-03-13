@@ -265,16 +265,24 @@
   /* GATED CONTENT OVERLAY */
   .gated-wrapper { position: relative; }
   .gated-wrapper.locked .gated-content {
-    max-height: 600px; overflow: hidden;
-    -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+    max-height: 500px; overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 90%);
+    mask-image: linear-gradient(to bottom, black 20%, transparent 90%);
     pointer-events: none;
   }
   .gated-wrapper.locked .gate-overlay {
     display: flex; position: absolute; bottom: 0; left: 0; right: 0;
-    height: 200px; align-items: flex-end; justify-content: center; padding-bottom: 20px;
+    height: auto; align-items: flex-end; justify-content: center; padding-bottom: 40px; padding-top: 80px;
+    background: linear-gradient(to bottom, transparent 0%, white 40%);
   }
   .gated-wrapper .gate-overlay { display: none; }
+  .gate-overlay-cta {
+    background: var(--text); border-radius: 10px; padding: 36px 32px;
+    text-align: center; max-width: 540px; width: 100%;
+  }
+  .gate-overlay-cta h2 { font-family: 'Bureau Serif', Georgia, serif; font-size: 22px; font-weight: 400; color: #fff; margin-bottom: 8px; }
+  .gate-overlay-cta p { font-size: 14px; color: #b0b0b0; margin-bottom: 16px; line-height: 1.5; }
+  .gate-overlay-cta .email-form { max-width: 400px; margin: 0 auto; }
 
   /* BOTTOM EMAIL CTA (shown after unlock) */
   .email-cta {
@@ -318,7 +326,7 @@
     <div class="stat-label">Free Lightning Lessons</div>
   </div>
   <div class="stat-card">
-    <div class="stat-num">9</div>
+    <div class="stat-num">10</div>
     <div class="stat-label">Free Downloadable Resources</div>
   </div>
   <div class="stat-card">
@@ -357,11 +365,11 @@
   </div>
 </div>
 
-<!-- EMAIL GATE -->
+<!-- EMAIL GATE (hero) -->
 <div class="email-gate fade-in">
   <div class="email-gate-box">
-    <h2>Get your custom growth plan</h2>
-    <p>Access your full Vibe Coding for Product Managers growth plan -- expert tips, curated lessons, and a clear path from beginner to production-ready.</p>
+    <h2>Unlock your growth plan</h2>
+    <p>A structured learning plan with curated free lessons, resources, and courses taken by 400,000+ students.</p>
     <form class="email-form" id="gate-form" onsubmit="event.preventDefault(); unlockContent(this);">
       <input type="email" placeholder="you@company.com" required>
       <button type="submit">Get access</button>
@@ -370,11 +378,8 @@
   </div>
 </div>
 
-<!-- GATED CONTENT -->
-<div class="gated-wrapper" id="gated-wrapper">
-<div class="gated-content">
+<!-- UNGATED CONTENT: Why + Experts -->
 <div class="content">
-
   <!-- WHY THIS MATTERS -->
   <div class="why-section fade-in">
     <div class="section-label">Why this matters for PMs</div>
@@ -475,6 +480,12 @@
       <button class="instructor-follow" onclick="event.preventDefault();">Subscribe</button>
     </a>
   </div>
+</div><!-- end ungated content -->
+
+<!-- GATED CONTENT: Levels 1-3 -->
+<div class="gated-wrapper locked" id="gated-wrapper">
+<div class="gated-content">
+<div class="content">
 
   <!-- ============ LEVEL 1 ============ -->
   <div class="level-section fade-in">
@@ -485,12 +496,12 @@
     </div>
 
     <div class="subsection">
-      <div class="subsection-label">Key outcomes</div>
+      <div class="subsection-label">Key skills to master</div>
       <ul class="outcome-list">
-        <li><strong>Build a functional prototype in 10 minutes</strong> and test with users the same day, no coding required</li>
-        <li><strong>Use v0 + 21st.dev components</strong> to quickly build a polished UI from your idea</li>
-        <li><strong>Learn the exact prompt phrases</strong> that make AI actually build something that works, not just talk about it</li>
-        <li><strong>Deploy to Vercel or GitHub</strong> and share a live link with your team by end of day</li>
+        <li><strong>Build a functional prototype in under 30 minutes</strong> using v0, Lovable, Bolt, or Cursor — no coding required</li>
+        <li><strong>Pick the right tool for the job:</strong> quick UI mockups vs. full-stack apps vs. working inside an existing codebase</li>
+        <li><strong>Write prompts that produce working software</strong> by starting with structured specs and using the phrases that actually get results</li>
+        <li><strong>Deploy and share a live link</strong> with your team using Vercel or GitHub — same day</li>
       </ul>
     </div>
 
@@ -558,10 +569,10 @@
           <div class="resource-dl-title">AI Prototyping for Product Managers: Complete Guide</div>
           <div class="resource-dl-meta">Colin Matthews</div>
         </a>
-        <a href="https://drive.google.com/file/d/1gbsGPKp0ypsCjVId3WKWQ2Na-NKdtHem/view?usp=sharing" class="resource-dl">
-          <div class="resource-dl-badge">Resource</div>
-          <div class="resource-dl-title">AI Prototyping Toolkit</div>
-          <div class="resource-dl-meta">Colin Matthews</div>
+        <a href="https://snapdrum.com/resources/coding-tools-differences" class="resource-dl">
+          <div class="resource-dl-badge">Comparison</div>
+          <div class="resource-dl-title">Top Vibe Coding Tools &amp; Their Differences</div>
+          <div class="resource-dl-meta">Community</div>
         </a>
         <a href="https://getting-started-with-vib-azzhzx6.gamma.site/" class="resource-dl">
           <div class="resource-dl-badge">Guide</div>
@@ -620,12 +631,12 @@
     </div>
 
     <div class="subsection">
-      <div class="subsection-label">Key outcomes</div>
+      <div class="subsection-label">Key skills to master</div>
       <ul class="outcome-list">
-        <li><strong>Build reusable prototype baselines</strong> so your team ships 10x faster instead of starting from scratch each time</li>
-        <li><strong>Collect stakeholder and customer feedback</strong> on prototypes with simple workflows, not Slack threads</li>
-        <li><strong>Use Claude Code for codebase onboarding,</strong> research, and bug discovery without writing code yourself</li>
-        <li><strong>Nail AI PM interviews</strong> with the three core skills: AI prototyping, technical system design, and root-cause analysis</li>
+        <li><strong>Use prototypes to validate hypotheses</strong> before committing engineering resources</li>
+        <li><strong>Build reusable baselines</strong> and organize your team's prototypes instead of starting from scratch each time</li>
+        <li><strong>Onboard to codebases with Claude Code and Cursor</strong> — find bugs, run experiments, and write specs without writing code</li>
+        <li><strong>Prepare for AI PM interviews</strong> covering prototyping, technical system design, and root-cause analysis</li>
       </ul>
     </div>
 
@@ -710,10 +721,10 @@
           <div class="resource-dl-title">Claude Code and Codex Guide</div>
           <div class="resource-dl-meta">Carmelo Iaria</div>
         </a>
-        <a href="https://drive.google.com/file/d/1gbsGPKp0ypsCjVId3WKWQ2Na-NKdtHem/view?usp=sharing" class="resource-dl">
-          <div class="resource-dl-badge">Guide</div>
-          <div class="resource-dl-title">APIs for Product Managers</div>
-          <div class="resource-dl-meta">Colin Matthews</div>
+        <a href="https://www.deeplearning.ai/short-courses/evaluating-ai-agents/" class="resource-dl">
+          <div class="resource-dl-badge">Free Course</div>
+          <div class="resource-dl-title">Evaluating AI Agents</div>
+          <div class="resource-dl-meta">Aman Khan &amp; DeepLearning.AI</div>
         </a>
         <a href="https://gamma.app/docs/The-Vibe-Coders-Survival-Guide--yqjgloectxz0pzw" class="resource-dl">
           <div class="resource-dl-badge">Guide</div>
@@ -775,12 +786,12 @@
     </div>
 
     <div class="subsection">
-      <div class="subsection-label">Key outcomes</div>
+      <div class="subsection-label">Key skills to master</div>
       <ul class="outcome-list">
-        <li><strong>Know the 5 things that break in production</strong> (hallucinations, latency, cost, eval gaps, silent failures) and how to gate against them</li>
-        <li><strong>Validate before building:</strong> use Colin's 8-step process to avoid tech debt and error hell from skipping straight to code</li>
-        <li><strong>Define AI agent personas and coordination protocols</strong> using Cursor rules and the AAMAD framework</li>
-        <li><strong>Structure the PRD-to-prod pipeline</strong> so vibe-coded prototypes can actually make it to production</li>
+        <li><strong>Go from demo to production:</strong> understand the failure modes — hallucinations, latency spikes, cost explosions, eval gaps, silent failures</li>
+        <li><strong>Build and evaluate AI features</strong> with evals, prompt iteration, and data-driven quality gates</li>
+        <li><strong>Understand agentic architectures</strong> well enough to lead engineering teams — agent personas, coordination protocols, multi-agent systems</li>
+        <li><strong>Scale AI adoption across your EPD org</strong> with PRD-to-prod pipelines and operating model redesign</li>
       </ul>
     </div>
 
@@ -860,6 +871,11 @@
           <div class="resource-dl-title">AI Evals Cheatsheet for Product Managers</div>
           <div class="resource-dl-meta">Community</div>
         </a>
+        <a href="https://www.synapticai.consulting/s/THE-AGENTIC-ARCHITECT-PLAYBOOK.pdf" class="resource-dl">
+          <div class="resource-dl-badge">PDF</div>
+          <div class="resource-dl-title">The Agentic Architect Playbook</div>
+          <div class="resource-dl-meta">Carmelo Iaria</div>
+        </a>
       </div>
     </div>
 
@@ -934,12 +950,22 @@
 
 </div>
 </div><!-- end gated-content -->
-<div class="gate-overlay"></div>
+<div class="gate-overlay">
+  <div class="gate-overlay-cta">
+    <h2>Unlock your growth plan</h2>
+    <p>A structured learning plan with curated free lessons, resources, and courses taken by 400,000+ students.</p>
+    <form class="email-form" id="gate-form-2" onsubmit="event.preventDefault(); unlockContent(this);">
+      <input type="email" placeholder="you@company.com" required>
+      <button type="submit">Get access</button>
+    </form>
+  </div>
+</div>
 </div><!-- end gated-wrapper -->
 
 <script>
 function unlockContent(form) {
-  form.style.display = 'none';
+  // Hide both gate forms and show success on the hero gate
+  document.getElementById('gate-form').style.display = 'none';
   document.getElementById('gate-success').style.display = 'block';
   const wrapper = document.getElementById('gated-wrapper');
   wrapper.classList.remove('locked');
