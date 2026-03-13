@@ -23,7 +23,6 @@
     color: var(--text); background: #fff; line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-  body.locked { overflow: hidden; }
 
   .fade-in { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -263,19 +262,20 @@
     display: inline; font-size: 0.85em; margin-left: 6px; opacity: 0.5;
   }
 
-  /* FLOATING MODAL */
-  .gate-backdrop {
-    position: fixed; inset: 0; z-index: 200;
-    background: rgba(8, 12, 40, 0.45); backdrop-filter: blur(2px);
-    display: flex; align-items: center; justify-content: center;
-    padding: 24px;
-    opacity: 1; transition: opacity 0.3s ease;
+  /* FLOATING MODAL - scrolls with page, no backdrop */
+  .gate-modal-wrap {
+    position: sticky; top: 50vh; z-index: 200;
+    display: flex; justify-content: center;
+    pointer-events: none;
+    margin-top: -60px; margin-bottom: -60px;
+    transform: translateY(-50%);
   }
-  .gate-backdrop.hidden { opacity: 0; pointer-events: none; }
+  .gate-modal-wrap.hidden { display: none; }
   .gate-modal {
+    pointer-events: auto;
     background: var(--text); border-radius: 14px; padding: 40px 36px;
     text-align: center; max-width: 480px; width: 100%;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.25);
   }
   .gate-modal h2 {
     font-family: 'Bureau Serif', Georgia, serif; font-size: 24px; font-weight: 400;
@@ -283,6 +283,17 @@
   }
   .gate-modal p { font-size: 14px; color: #999; margin-bottom: 20px; line-height: 1.5; }
   .gate-modal .email-form { max-width: 360px; margin: 0 auto; }
+
+  /* Fade out content after first section */
+  .gated-fade {
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+    pointer-events: none;
+  }
+  body:not(.locked) .gated-fade {
+    -webkit-mask-image: none; mask-image: none; pointer-events: auto;
+  }
+
   @media (max-width: 640px) {
     .gate-modal { padding: 32px 24px; }
     .gate-modal .email-form { flex-direction: column; }
@@ -605,6 +616,23 @@
   </div>
 
   <hr class="divider">
+
+  </div><!-- end first content block -->
+
+  <!-- FLOATING MODAL + FADED CONTENT -->
+  <div class="gate-modal-wrap" id="gate-modal-wrap">
+    <div class="gate-modal">
+      <h2>Unlock your growth plan</h2>
+      <p>A structured learning plan with curated free lessons, resources, and courses taken by 400,000+ students.</p>
+      <form class="email-form" id="gate-form" onsubmit="event.preventDefault(); unlockContent();">
+        <input type="email" placeholder="you@company.com" required>
+        <button type="submit">Get access</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="gated-fade" id="gated-fade">
+  <div class="content" style="padding-top: 0;">
 
   <!-- ============ LEVEL 2 ============ -->
   <div class="level-section fade-in">
@@ -933,23 +961,13 @@
 
 
 </div>
-
-<!-- FLOATING MODAL -->
-<div class="gate-backdrop" id="gate-backdrop">
-  <div class="gate-modal">
-    <h2>Unlock your growth plan</h2>
-    <p>A structured learning plan with curated free lessons, resources, and courses taken by 400,000+ students.</p>
-    <form class="email-form" id="gate-form" onsubmit="event.preventDefault(); unlockContent();">
-      <input type="email" placeholder="you@company.com" required>
-      <button type="submit">Get access</button>
-    </form>
-  </div>
-</div>
+</div><!-- end gated-fade -->
 
 <script>
 function unlockContent() {
   document.body.classList.remove('locked');
-  document.getElementById('gate-backdrop').classList.add('hidden');
+  document.getElementById('gate-modal-wrap').classList.add('hidden');
+  document.getElementById('gated-fade').classList.remove('gated-fade');
 }
 
 const observer = new IntersectionObserver((entries) => {
