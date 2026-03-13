@@ -23,7 +23,7 @@
     color: var(--text); background: #fff; line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-  body.locked { padding-bottom: 80px; }
+  body.locked { overflow: hidden; }
 
   .fade-in { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -252,44 +252,41 @@
   }
   .email-form button:hover { opacity: 0.9; }
 
-  /* LOCKED STATE: all interactive content disabled */
+  /* LOCKED STATE: LLs and resources disabled, courses stay clickable */
   body.locked .ll-card,
   body.locked .resource-dl,
-  body.locked .course-card,
   body.locked .instructor-follow { pointer-events: none; }
 
-  /* FLOATING EMAIL BAR */
-  .floating-gate {
-    position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
-    background: var(--text); padding: 16px 24px;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
-    transform: translateY(0); transition: transform 0.4s ease;
-  }
-  .floating-gate.hidden { transform: translateY(100%); pointer-events: none; }
-  .floating-gate-inner {
-    max-width: 720px; margin: 0 auto;
-    display: flex; align-items: center; gap: 16px;
-  }
-  .floating-gate-text { flex: 1; min-width: 0; }
-  .floating-gate-text h3 {
-    font-family: 'Bureau Serif', Georgia, serif; font-size: 16px; font-weight: 400;
-    color: #fff; margin-bottom: 2px; white-space: nowrap;
-  }
-  .floating-gate-text p { font-size: 12px; color: #999; line-height: 1.4; }
-  .floating-gate .email-form { flex-shrink: 0; }
-  .floating-gate .email-success { color: var(--highlight); }
-  @media (max-width: 640px) {
-    .floating-gate-inner { flex-direction: column; gap: 10px; text-align: center; }
-    .floating-gate-text p { display: none; }
+  /* Lock icon next to carousel labels */
+  .carousel-lock { display: none; }
+  body.locked .carousel-lock {
+    display: inline; font-size: 0.85em; margin-left: 6px; opacity: 0.5;
   }
 
-  /* BOTTOM EMAIL CTA (shown after unlock) */
-  .email-cta {
-    background: var(--text); border-radius: 10px; padding: 40px 32px;
-    text-align: center; margin-top: 48px;
+  /* FLOATING MODAL */
+  .gate-backdrop {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(8, 12, 40, 0.45); backdrop-filter: blur(2px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    opacity: 1; transition: opacity 0.3s ease;
   }
-  .email-cta h2 { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-  .email-cta p { font-size: 14px; color: #999; margin-bottom: 20px; line-height: 1.6; }
+  .gate-backdrop.hidden { opacity: 0; pointer-events: none; }
+  .gate-modal {
+    background: var(--text); border-radius: 14px; padding: 40px 36px;
+    text-align: center; max-width: 480px; width: 100%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  .gate-modal h2 {
+    font-family: 'Bureau Serif', Georgia, serif; font-size: 24px; font-weight: 400;
+    color: #fff; margin-bottom: 8px;
+  }
+  .gate-modal p { font-size: 14px; color: #999; margin-bottom: 20px; line-height: 1.5; }
+  .gate-modal .email-form { max-width: 360px; margin: 0 auto; }
+  @media (max-width: 640px) {
+    .gate-modal { padding: 32px 24px; }
+    .gate-modal .email-form { flex-direction: column; }
+  }
 
   @media (max-width: 640px) {
     .hero h1 { font-size: 30px; }
@@ -494,7 +491,7 @@
   <div class="level-section">
     <!-- LL CAROUSEL -->
     <div class="carousel-wrap">
-      <div class="carousel-label">Free Lightning Lessons</div>
+      <div class="carousel-label">Free Lightning Lessons<span class="carousel-lock">🔒</span></div>
       <div class="carousel-track">
         <a href="https://maven.com/p/927d84" class="ll-card upcoming">
           <div class="ll-card-top">
@@ -549,7 +546,7 @@
 
     <!-- RESOURCES CAROUSEL -->
     <div class="carousel-wrap">
-      <div class="carousel-label">Free Resources</div>
+      <div class="carousel-label">Free Resources<span class="carousel-lock">🔒</span></div>
       <div class="carousel-track">
         <a href="https://bvecny6lw1vwu0sv.public.blob.vercel-storage.com/AI-Prototyping-for-Product-Managers---Complete-Guide-WYjQuClLHoiF3hPOfPWNIbg3N5ngkW.pdf" class="resource-dl">
           <div class="resource-dl-badge">PDF Guide</div>
@@ -629,7 +626,7 @@
 
     <!-- LL CAROUSEL -->
     <div class="carousel-wrap">
-      <div class="carousel-label">Free Lightning Lessons</div>
+      <div class="carousel-label">Free Lightning Lessons<span class="carousel-lock">🔒</span></div>
       <div class="carousel-track">
         <a href="https://maven.com/p/a42c6c" class="ll-card upcoming">
           <div class="ll-card-top">
@@ -701,7 +698,7 @@
 
     <!-- RESOURCES CAROUSEL -->
     <div class="carousel-wrap">
-      <div class="carousel-label">Free Resources</div>
+      <div class="carousel-label">Free Resources<span class="carousel-lock">🔒</span></div>
       <div class="carousel-track">
         <a href="https://the-best-coding-agents-i-2hru7ui.gamma.site/" class="resource-dl">
           <div class="resource-dl-badge">Guide</div>
@@ -784,7 +781,7 @@
 
     <!-- LL CAROUSEL -->
     <div class="carousel-wrap">
-      <div class="carousel-label">Free Lightning Lessons</div>
+      <div class="carousel-label">Free Lightning Lessons<span class="carousel-lock">🔒</span></div>
       <div class="carousel-track">
         <a href="https://maven.com/p/9255aa" class="ll-card upcoming">
           <div class="ll-card-top">
@@ -841,7 +838,7 @@
 
     <!-- RESOURCES CAROUSEL -->
     <div class="carousel-wrap">
-      <div class="carousel-label">Free Resources</div>
+      <div class="carousel-label">Free Resources<span class="carousel-lock">🔒</span></div>
       <div class="carousel-track">
         <a href="https://hamel.dev/notes/llm/evals/flashcards/" class="resource-dl">
           <div class="resource-dl-badge">Flashcards</div>
@@ -937,13 +934,11 @@
 
 </div>
 
-<!-- FLOATING EMAIL BAR -->
-<div class="floating-gate" id="floating-gate">
-  <div class="floating-gate-inner">
-    <div class="floating-gate-text">
-      <h3>Unlock your growth plan</h3>
-      <p>Curated free lessons, resources, and courses taken by 400,000+ students.</p>
-    </div>
+<!-- FLOATING MODAL -->
+<div class="gate-backdrop" id="gate-backdrop">
+  <div class="gate-modal">
+    <h2>Unlock your growth plan</h2>
+    <p>A structured learning plan with curated free lessons, resources, and courses taken by 400,000+ students.</p>
     <form class="email-form" id="gate-form" onsubmit="event.preventDefault(); unlockContent();">
       <input type="email" placeholder="you@company.com" required>
       <button type="submit">Get access</button>
@@ -954,7 +949,7 @@
 <script>
 function unlockContent() {
   document.body.classList.remove('locked');
-  document.getElementById('floating-gate').classList.add('hidden');
+  document.getElementById('gate-backdrop').classList.add('hidden');
 }
 
 const observer = new IntersectionObserver((entries) => {
